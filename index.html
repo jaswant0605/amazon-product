@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Landing Page — Off-Amazon</title>
+<style>
+  :root {
+    --bg: #101216;
+    --panel: #171a20;
+    --text: #f2f1ec;
+    --muted: #9a9da6;
+    --accent: #ffb020;
+    --accent-dark: #cc8a10;
+    --border: #262a32;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+  .banner {
+    background: #ffb020;
+    color: #101216;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 8px 12px;
+    text-transform: uppercase;
+  }
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  .image-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.15;
+    margin: 0 0 12px;
+  }
+  .price {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 16px 0 4px;
+  }
+  .price-note {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+  ul.features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+  }
+  ul.features li {
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 10px;
+    color: #cfcfcf;
+    font-size: 15px;
+  }
+  ul.features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: #101216;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .cta:hover { background: var(--accent-dark); }
+  .cta:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+  .subtext {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .log-panel {
+    margin-top: 48px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 12px;
+    color: #8fe08f;
+    min-height: 60px;
+    white-space: pre-wrap;
+  }
+  .log-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+  <div class="banner">Test build — not for production traffic</div>
+
+  <div class="wrap">
+    <div class="grid">
+      <div class="image-box">Product image placeholder</div>
+      <div>
+        <h1>Test Product Name</h1>
+        <div class="price">$24.99</div>
+        <div class="price-note">Ships from and sold by Amazon.com</div>
+        <ul class="features">
+          <li>Feature or benefit one goes here</li>
+          <li>Feature or benefit two goes here</li>
+          <li>Third selling point for the test copy</li>
+        </ul>
+        <a
+          id="cta-button"
+          class="cta"
+          href="https://www.amazon.com/dp/B00TESTASIN?utm_source=test&utm_medium=landingpage&utm_campaign=offamazon_test"
+          target="_blank"
+          rel="noopener"
+        >
+          Buy on Amazon →
+        </a>
+        <div class="subtext">Clicking logs an event below and opens Amazon in a new tab.</div>
+      </div>
+    </div>
+
+    <div class="log-panel">
+      <div class="log-title">Click / event log</div>
+      <div id="log">Waiting for interaction…</div>
+    </div>
+  </div>
+
+  <script>
+    const logEl = document.getElementById('log');
+    const ctaBtn = document.getElementById('cta-button');
+
+    function logEvent(msg) {
+      const time = new Date().toISOString();
+      logEl.textContent = `[${time}] ${msg}\n` + logEl.textContent;
+    }
+
+    logEvent('Page loaded. Ready to test.');
+
+    ctaBtn.addEventListener('click', () => {
+      logEvent('CTA clicked → redirecting to: ' + ctaBtn.href);
+      // Hook your real tracking pixel / analytics call here, e.g.:
+      // fbq('track', 'Lead');
+      // gtag('event', 'click_to_amazon');
+    });
+  </script>
+
+</body>
+</html>
