@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Test Landing Page — Off-Amazon</title>
+<title>MSI Codex Z2 Gaming Desktop — RTX 5070</title>
 <style>
   :root {
     --bg: #101216;
@@ -56,9 +56,28 @@
     justify-content: center;
     font-size: 14px;
     color: var(--muted);
+    overflow: hidden;
   }
+  .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #fff;
+  }
+  .brand {
+    color: var(--muted);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .rating {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .rating .stars { color: var(--accent); letter-spacing: 1px; }
   h1 {
-    font-size: 32px;
+    font-size: 26px;
     line-height: 1.15;
     margin: 0 0 12px;
   }
@@ -142,15 +161,23 @@
 
   <div class="wrap">
     <div class="grid">
-      <div class="image-box">Product image placeholder</div>
+      <div class="image-box">
+        <img
+          src="https://m.media-amazon.com/images/I/71Z1Bk+8Z4L._AC_SL1500_.jpg"
+          alt="MSI Codex Z2 gaming desktop tower with RGB lighting"
+        >
+      </div>
       <div>
-        <h1>Test Product Name</h1>
-        <div class="price">$24.99</div>
-        <div class="price-note">Ships from and sold by Amazon.com</div>
+        <div class="brand">MSI</div>
+        <h1>Codex Z2 Gaming Desktop — AMD Ryzen 7 8700F, RTX 5070, 32GB DDR5, 2TB SSD</h1>
+        <div class="rating"><span class="stars">★★★★☆</span> 4.3 out of 5 · 267 ratings</div>
+        <div class="price">$2,083.05</div>
+        <div class="price-note">Windows 11 Home · 8 cores / 16 threads · up to 5.0 GHz</div>
         <ul class="features">
-          <li>Feature or benefit one goes here</li>
-          <li>Feature or benefit two goes here</li>
-          <li>Third selling point for the test copy</li>
+          <li>8-core AMD Ryzen 7 8700F, boosting up to 5.0 GHz for AAA gaming and streaming</li>
+          <li>NVIDIA GeForce RTX 5070 on the Blackwell architecture for faster rasterization and ray tracing</li>
+          <li>ARGB air cooler plus four system fans keep temperatures down while gaming</li>
+          <li>Built-in RGB lighting, customizable with the MSI LED button and MSI Center</li>
         </ul>
         <a
           id="cta-button"
